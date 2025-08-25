@@ -11,8 +11,24 @@ dependencies = [
     "loguru (>=0.7.3,<0.8.0)",
     "pydantic-settings (>=2.10.1,<3.0.0)",
     "python-dotenv (>=1.1.1,<2.0.0)",
-    "keyring (>=25.6.0,<26.0.0)"
+    "keyring (>=25.6.0,<26.0.0)",
+    "halo (>=0.0.31,<0.0.32)",
 ]
+
+[project.scripts]
+org-file = "python_scripts.modules.org_file.cli:main"
+quotes-scraper = "python_scripts.modules.quotes_scraper.cli:main"
+excel-report = "python_scripts.modules.excel_report.cli:main"
+pdf-merge = "python_scripts.modules.pdf_tools.cli:main"
+weather = "python_scripts.modules.weather_notifier.cli:main"
+email-send = "python_scripts.modules.email_sender.cli:main"
+type-text = "python_scripts.modules.desktop_automation.cli:main"
+data-clean = "python_scripts.modules.data_cleaning.cli:main"
+chatbot = "python_scripts.modules.chatbot.cli:main"
+bitcoin-price = "python_scripts.modules.bitcoin_price.cli:main"
+scheduler-demo = "python_scripts.modules.scheduler.cli:main"
+web-flask = "python_scripts.modules.web_flask.cli:main"
+web-fastapi = "python_scripts.modules.web_fastapi.cli:main"
 
 
 [build-system]
@@ -20,7 +36,10 @@ requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-package-mode = false
+package-mode = true
+packages = [
+  { include = "python_scripts", from = "src" }
+]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.4.1"
