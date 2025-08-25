@@ -80,3 +80,17 @@ Install lazily as needed:
 ## Troubleshooting
 - Log all failures, errors, and odd behaviors in `troubleshooting_log.md` at repo root.
 - Use the template in that file to capture context, stack traces, logs, root cause, and fix.
+
+## Development
+- Pre-commit hooks run Ruff auto-fix and check via local hooks defined in `.pre-commit-config.yaml`.
+- Setup (requires dev dependency install):
+
+```powershell
+poetry add --group dev pre-commit
+poetry run pre-commit install
+poetry run pre-commit run -a
+```
+
+- Ruff settings live in `pyproject.toml` under `[tool.ruff]`. Keep line-length and excludes in sync
+  with the pre-commit config.
+- To temporarily skip hooks (not recommended): `git commit -n`

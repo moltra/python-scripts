@@ -1,0 +1,19 @@
+# Pre-commit configuration for this repository
+# Uses local hooks to run Ruff from the Poetry environment.
+# Keep line-length and exclusions in sync with `pyproject.toml` [tool.ruff].
+
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-fix
+        name: Ruff (auto-fix)
+        entry: poetry run ruff --fix
+        language: system
+        types: [python]
+        pass_filenames: true
+      - id: ruff-check
+        name: Ruff (check)
+        entry: poetry run ruff check
+        language: system
+        types: [python]
+        pass_filenames: true
